@@ -1,5 +1,8 @@
 # bilibili-info-mcp
 
+[![npm version](https://img.shields.io/npm/v/bilibili-info-mcp.svg)](https://www.npmjs.com/package/bilibili-info-mcp)
+[![GitHub](https://img.shields.io/github/license/sunwu51/bilibili-info-mcp)](https://github.com/sunwu51/bilibili-info-mcp)
+
 MCP server for fetching Bilibili video metadata and subtitles. Runs locally via stdio transport.
 
 ## Features
@@ -9,20 +12,12 @@ MCP server for fetching Bilibili video metadata and subtitles. Runs locally via 
 - WBI signature support for reliable subtitle retrieval
 - Stdio transport for local MCP client integration
 
-## Project Structure
+## Usage
 
-```
-src/
-  index.ts              # MCP server entry point (stdio transport)
-  bilibili-fetcher.ts   # Bilibili API calls (video info + subtitles)
-  wbi.ts                # WBI signature algorithm implementation
-```
-
-## Setup
+No installation required. Use directly with `npx`:
 
 ```bash
-npm install
-npm run build
+npx bilibili-info-mcp
 ```
 
 ## MCP Client Configuration
@@ -33,8 +28,8 @@ npm run build
 {
   "mcpServers": {
     "bilibili-info": {
-      "command": "node",
-      "args": ["/absolute/path/to/bilibili-info-mcp/dist/index.js"],
+      "command": "npx",
+      "args": ["bilibili-info-mcp"],
       "env": {
         "SESSDATA": "your_bilibili_sessdata_cookie"
       }
@@ -98,6 +93,24 @@ When `includeSubtitles` is `true`, returns a single subtitle track with the foll
 
 1. Chinese (matching `中文`, `zh-CN`, `zh-Hans`, `zh`)
 2. English (matching `English`, `英语`, `en`, `en-US`)
+
+## Development
+
+```bash
+git clone https://github.com/sunwu51/bilibili-info-mcp.git
+cd bilibili-info-mcp
+npm install
+npm run build
+```
+
+### Project Structure
+
+```
+src/
+  index.ts              # MCP server entry point (stdio transport)
+  bilibili-fetcher.ts   # Bilibili API calls (video info + subtitles)
+  wbi.ts                # WBI signature algorithm implementation
+```
 
 ## How It Works
 
